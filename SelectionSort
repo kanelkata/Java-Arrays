@@ -1,0 +1,33 @@
+package Arrays;
+
+public class SelectionSort {
+
+		/**
+		 * 
+		 * Сортиране на масив означава да подредим елементите му в нарастващ (намаляващ) ред. 
+		 * Напишете програма, която сортира масив. Да се използва алгоритъма "Selection sort".
+		 * 
+		 */
+	public static void main(String[] args) {
+		
+		int[] arr = {9,6,5,9,6,3,2,6,5,6,5,2};
+		
+		
+		for (int i = 0; i < arr.length; i++) { //обхожда като за началото взима всеки един елемент последователно
+			
+			for (int k = 0; k < arr.length-i; k++) {  // обхожда втория елемент за сравнение
+				if (arr[i]>arr[i+k]) {
+					int a = arr[i];
+					arr[i] = arr[i+k];
+					arr[i+k] = a;					
+				}				
+			}			
+		}
+		System.out.print("{");
+		for (int j = 0; j < arr.length; j++) {
+			System.out.print(" " + arr[j] + " ");
+		}
+		System.out.print("}");
+	}
+
+}
