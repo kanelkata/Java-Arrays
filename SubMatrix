@@ -1,0 +1,68 @@
+package Arrays;
+import java.util.Scanner;
+
+public class Подматрица {
+
+	/** 
+	 * Да се напише програма, която създава правоъгълна матрица с размер (n, m).
+	 *  Размерността и елементите на матрицата да се четат от конзолата.
+	 *   Да се намери подматрицата с размер (3,3), която има максимална сума. 
+	 */
+	 
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+		int m = scan.nextInt();
+		int[][] matrix = new int[n][m];
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				matrix[i][j] = scan.nextInt();
+			}
+		}
+		
+		int bestSum = Integer.MIN_VALUE;
+		int bestRow = 0;					//Запазва редът, в която се намират елементите с най-гол. сума
+		int bestCol = 0;					//Запазва колоната, в която се намират елементите с най-гол. сума
+		for (int row = 0; row < matrix.length - 2; row++) {			//Ред
+			for (int col = 0; col < matrix[0].length - 2; col++) {  //Колона
+				int sum = matrix[row][col] + matrix[row][col + 1]
+						+ matrix[row + 1][col] + matrix[row + 1][col + 1] + 
+						+ matrix[row][col + 2] + matrix[row + 1][col + 2] +
+						+ matrix[row + 2][col] + matrix[row + 2][col + 1] +
+						+ matrix[row+2][col + 2];
+				if (sum > bestSum) {
+				bestSum = sum;
+				bestRow = row;
+				bestCol = col;
+				}
+				}
+				}
+		
+		System.out.println("Your matrix is: ");
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				System.out.print(" " + matrix[i][j] + " ");
+			}
+			System.out.print("\n");
+		}
+
+				// Print the result
+		System.out.println("The best platform is:");
+		System.out.printf(" %d %d %d%n",
+						matrix[bestRow][bestCol],
+						matrix[bestRow][bestCol + 1],
+						matrix[bestRow][bestCol + 2]);
+		System.out.printf(" %d %d %d%n",
+						matrix[bestRow + 1][bestCol],
+						matrix[bestRow + 1][bestCol + 1],
+						matrix[bestRow + 1][bestCol + 2]);
+		System.out.printf(" %d %d %d%n",
+						matrix[bestRow + 2][bestCol],
+						matrix[bestRow + 2][bestCol + 1],
+						matrix[bestRow + 2][bestCol + 2]);
+		System.out.printf("The maximal sum is: %d%n", bestSum);
+						}
+}
+
+
